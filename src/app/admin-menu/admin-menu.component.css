@@ -1,0 +1,22 @@
+/* admin-menu.component.css */
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 250px;
+}
+
+.mat-toolbar {
+  background: #3f51b5;
+  color: white;
+}
+
+.mat-nav-list a {
+  color: rgba(0, 0, 0, 0.87);
+  text-decoration: none;
+}
+
+.mat-nav-list a:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
