@@ -11,7 +11,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
@@ -21,7 +21,11 @@ import { HorariosComponent } from './horarios/horarios.component';
 import { AsignarHorariosComponent } from './asignar-horarios/asignar-horarios.component';
 import { EspecialidadDialogComponent } from './especialidad-dialog/especialidad-dialog.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule
+import { HttpClientModule } from '@angular/common/http';
+import { MedicosDialogComponent } from './medico-dialog/medico-dialog.component';
+import { MatSelectModule } from '@angular/material/select';
+
+import { MatOptionModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,7 @@ import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientMo
     HorariosComponent,
     AsignarHorariosComponent,
     EspecialidadDialogComponent,
+    MedicosDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +53,9 @@ import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientMo
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatOptionModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

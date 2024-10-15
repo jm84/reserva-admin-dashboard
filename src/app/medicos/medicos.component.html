@@ -1,1 +1,60 @@
-<p>medicos works!</p>
+<mat-toolbar color="primary">
+  <span>Medicos</span>
+  <span class="spacer"></span>
+  <button (click)="openDialog()">Open Dialog</button>
+</mat-toolbar>
+
+<mat-table [dataSource]="medicos" class="mat-elevation-z8">
+  <ng-container matColumnDef="nombre">
+    <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+    <mat-cell *matCellDef="let medico"> {{ medico.usuario.nombre }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="especialidad">
+    <mat-header-cell *matHeaderCellDef> Especialidad </mat-header-cell>
+    <mat-cell *matCellDef="let medico">
+      {{ medico.especialidad.nombre }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="acciones">
+    <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+    <mat-cell *matCellDef="let medico">
+      <button mat-icon-button color="primary" (click)="editMedico(medico)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="deleteMedico(medico.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
+
+<ng-template #dialogTemplate>
+  <h1 mat-dialog-title>{{ isEdit ? "Editar Medico" : "Agregar Medico" }}</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="medicoForm">
+      <mat-form-field>
+        <input matInput placeholder="Nombre" formControlName="nombre" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Especialidad" formControlName="especialidad">
+          <mat-option
+            *ngFor="let especialidad of especialidades"
+            [value]="especialidad.nombre"
+          >
+            {{ especialidad.nombre }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="saveMedico()">
+      {{ isEdit ? "Guardar" : "Agregar" }}
+    </button>
+  </div>
+</ng-template>
